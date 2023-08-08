@@ -89,14 +89,14 @@ instance
   -- ** reflection
 
   DecEq-Name = DecEq _ ∋ record {M}
-    where import Reflection.Name as M
+    where import Reflection.AST.Name as M
 
   DecEq-Term = DecEq _ ∋ record {M}
-    where import Reflection.Term as M
+    where import Reflection.AST.Term as M
 
   DecEq-Arg : ⦃ DecEq A ⦄ → DecEq (Arg A)
   DecEq-Arg ._≟_ = M.≡-dec _≟_
-    where import Reflection.Argument as M
+    where import Reflection.AST.Argument as M
 
   DecEq-Vis = DecEq _ ∋ record {M}
-    where import Reflection.Argument.Visibility as M
+    where import Reflection.AST.Argument.Visibility as M

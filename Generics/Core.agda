@@ -6,7 +6,7 @@ open import Data.List using ([]; _∷_)
 open import Data.Product using (_×_)
 
 open import Reflection
-open import Reflection.Term
+open import Reflection.AST.Term
 
 -- ** Smart constructors
 

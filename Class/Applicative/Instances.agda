@@ -62,8 +62,9 @@ instance
 
   Alternative-TC : Alternative TC
   Alternative-TC = record {M}
-    where import Reflection.TypeChecking.Monad.Syntax as M
+    where import Reflection.TCM.Syntax as M
 
   Applicative-TC : Applicative TC
-  Applicative-TC = record {M}
-    where import Reflection.TypeChecking.Monad.Syntax as M
+  Applicative-TC = record {M; M'}
+    where import Reflection.TCM as M
+          import Reflection.TCM.Syntax as M'

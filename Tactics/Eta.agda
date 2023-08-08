@@ -9,8 +9,8 @@ open import Data.Nat
 open import Data.Fin
 
 open import Reflection hiding (return; _>>=_; _>>_)
-open import Reflection.Meta hiding (toℕ)
-open import Reflection.Term
+open import Reflection.AST.Meta hiding (toℕ)
+open import Reflection.AST.Term
 
 open import Generics
 open Debug ("eta" , 100)

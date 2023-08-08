@@ -15,7 +15,7 @@ open import Class.Show
 
 open import Generics
 open import Reflection hiding (_>>=_; _>>_; return)
-open import Reflection.Meta
+open import Reflection.AST.Meta
 open Debug ("Generics.Intros" , 100)
 
 intro : Hole → Tactic → TC ⊤

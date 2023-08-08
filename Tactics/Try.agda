@@ -14,10 +14,10 @@ open import Relation.Nullary
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 
 open import Reflection hiding (return; _>>=_; _>>_; _≟_)
-open import Reflection.Meta hiding (_≟_)
-open import Reflection.Argument hiding (map)
-open import Reflection.Abstraction hiding (map)
-open import Reflection.Term hiding (_≟_)
+open import Reflection.AST.Meta hiding (_≟_)
+open import Reflection.AST.Argument hiding (map)
+open import Reflection.AST.Abstraction hiding (map)
+open import Reflection.AST.Term hiding (_≟_)
 
 open import Generics
 open Debug ("try" , 100)

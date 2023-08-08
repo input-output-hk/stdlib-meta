@@ -1,6 +1,6 @@
 {-# OPTIONS --safe --without-K #-}
 
-open import Prelude
+open import MetaPrelude
 
 open import Relation.Binary
 

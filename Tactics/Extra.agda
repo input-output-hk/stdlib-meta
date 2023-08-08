@@ -19,7 +19,7 @@ open import Data.Vec using (Vec; []; _∷_)
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 
 open import Reflection hiding (return; _>>=_; _>>_; _≟_)
-open import Reflection.Term hiding (_≟_)
+open import Reflection.AST.Term hiding (_≟_)
 
 open import Generics
 open Debug ("extra" , 100)

@@ -1,18 +1,18 @@
 {-# OPTIONS --safe --without-K #-}
 module Tactic.Helpers where
 
-open import Prelude
+open import MetaPrelude
 open import Meta
 
 open import Data.Nat using () renaming (_≟_ to _≟ℕ_)
 open import Data.List using (map; zipWith)
 import Data.Sum
 
-open import Generics
+open import Generics hiding (error)
 
 open import Relation.Nullary.Decidable hiding (map)
 open import Reflection.Syntax
-open import Reflection.Name using (_≟_)
+open import Reflection.AST.Name using (_≟_)
 
 import Reflection
 open import Interface.Monad.Instance
@@ -102,7 +102,7 @@ module _ {M : ∀ {a} → Set a → Set a} ⦃ _ : Monad M ⦄ ⦃ me : MonadErr
   getDataDef n = inDebugPath "getDataDef" do
     debugLog ("Find details for datatype: " ∷ᵈ n ∷ᵈ [])
     (data-type pars cs) ← getDefinition n
-      where _ → error1 "Not a data definition!"
+      where _ → error (n ∷ᵈ " is not a 'data' type!" ∷ᵈ [])
     debugLogᵐ ("Constructor names: " ∷ᵈᵐ cs ᵛ ∷ᵈᵐ []ᵐ)
     cs' ← traverseList (λ n → (n ,_) <$> getType' n) cs
     debugLogᵐ ("Result: " ∷ᵈᵐ cs' ᵛⁿ ∷ᵈᵐ []ᵐ)
@@ -112,7 +112,7 @@ module _ {M : ∀ {a} → Set a → Set a} ⦃ _ : Monad M ⦄ ⦃ me : MonadErr
   getRecordDef : Name → M RecordDef
   getRecordDef n = do
     (record-type c fs) ← getDefinition n
-      where _ → error1 "Not a record definition!"
+      where _ → error (n ∷ᵈ " is not a 'record' type!" ∷ᵈ [])
     args ← proj₁ <$> getType' n
     return (record { name = c ; fields = fs ; params = args })
 
@@ -120,7 +120,7 @@ module _ {M : ∀ {a} → Set a → Set a} ⦃ _ : Monad M ⦄ ⦃ me : MonadErr
   getDataOrRecordDef n =
     catch (inj₁ <$> getDataDef n)
       λ _ → catch (inj₂ <$> getRecordDef n)
-      λ _ → error1 "Neither a data not a record definition!"
+      λ _ → error (n ∷ᵈ " is neither a 'data' not a 'record' type!" ∷ᵈ [])
 
   getParams : Name → M (List (Abs (Arg Type)))
   getParams n = Data.Sum.[ DataDef.params , RecordDef.params ] <$> getDataOrRecordDef n

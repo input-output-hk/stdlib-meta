@@ -2,7 +2,7 @@
 
 module Interface.MonadTC where
 
-open import Prelude
+open import MetaPrelude
 
 open import Data.List using (map)
 
@@ -23,7 +23,7 @@ private
 
 instance
   Monad-TC : Monad R.TC
-  Monad-TC = record { R }
+  Monad-TC = record { R ; return = R.pure }
 
 data ReductionOptions : Set where
   onlyReduce : List Name → ReductionOptions
@@ -49,7 +49,7 @@ initTCEnvWithGoal goal = R.getContext <&> λ ctx → record
   ; reconstruction = false
   ; noConstraints  = false
   ; reduction      = reduceAll
-  ; globalContext  = ctx
+  ; globalContext  = Data.List.map proj₂ ctx
   ; localContext   = []
   ; goal           = inj₁ goal
   ; debug          = defaultDebugOptions

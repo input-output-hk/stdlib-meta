@@ -5,14 +5,15 @@ open import Level using (Level)
 open import Function
 
 open import Reflection hiding (visibility)
-open import Reflection.Term
-import Reflection.Abstraction as Abs
-open import Reflection.Argument as Arg hiding (map)
-import Reflection.Name as Name
-open import Reflection.Pattern
-open import Reflection.Argument.Information
-open import Reflection.Argument.Visibility as Vis
-open import Reflection.TypeChecking.Monad.Syntax
+open import Reflection.AST.Term
+import Reflection.AST.Abstraction as Abs
+open import Reflection.AST.Argument as Arg hiding (map)
+import Reflection.AST.Name as Name
+open import Reflection.AST.Pattern
+open import Reflection.AST.Argument.Information
+open import Reflection.AST.Argument.Visibility as Vis
+open import Reflection.TCM.Syntax
+open import Reflection.TCM using () renaming (pure to return)
 
 open import Data.Unit
 open import Data.Product hiding (map; zip)

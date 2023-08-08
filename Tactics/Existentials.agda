@@ -7,7 +7,7 @@ open import Data.List as L using (reverse; upTo; length)
 open import Data.String using (String)
 
 open import Reflection hiding (return; _>>=_; _>>_; _≟_)
-open import Reflection.Term hiding (_≟_)
+open import Reflection.AST.Term hiding (_≟_)
 
 open import Generics
 
@@ -31,33 +31,33 @@ macro
   mk∃ : Name → Tactic
   mk∃ t hole = mkExistential 0 t >>= unify hole
 
-private
-  data X : ℕ → String → ℕ → Set where
-    mkX : X 0 "" 1
+-- private
+--   data X : ℕ → String → ℕ → Set where
+--     mkX : X 0 "" 1
 
-  _ : mk∃ X
-  _ = 0 , "" , 1 , mkX
+--   _ : mk∃ X
+--   _ = 0 , "" , 1 , mkX
 
-  module _ (n : ℕ) where
-    data Y : String → ℕ → Set where
-      mkY : Y "" 1
+--   module _ (n : ℕ) where
+--     data Y : String → ℕ → Set where
+--       mkY : Y "" 1
 
-    _ : mk∃[nest: 1 ] Y
-    _ = "" , 1 , mkY
+--     _ : mk∃[nest: 1 ] Y
+--     _ = "" , 1 , mkY
 
-    module _ (s : String) where
+--     module _ (s : String) where
 
-      data Z : ℕ → Set where
-        mkZ : Z 1
+--       data Z : ℕ → Set where
+--         mkZ : Z 1
 
-      _ : mk∃[nest: 2 ] Z
-      _ = 1 , mkZ
+--       _ : mk∃[nest: 2 ] Z
+--       _ = 1 , mkZ
 
-    _ : mk∃[nest: 1 ] Z
-    _ = "sth" , 1 , mkZ
+--     _ : mk∃[nest: 1 ] Z
+--     _ = "sth" , 1 , mkZ
 
-  _ : mk∃ Y
-  _ = 42 , "" , 1 , mkY
+--   _ : mk∃ Y
+--   _ = 42 , "" , 1 , mkY
 
-  _ : mk∃ Z
-  _ = 0 , "sth" , 1 , mkZ
+--   _ : mk∃ Z
+--   _ = 0 , "sth" , 1 , mkZ

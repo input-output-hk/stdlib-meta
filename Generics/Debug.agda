@@ -15,8 +15,8 @@ open import Data.Nat using (ℕ)
 open import Data.Fin using (Fin)
 
 open import Reflection hiding (_>>_; _>>=_)
-open import Reflection.Term
-open import Reflection.Meta
+open import Reflection.AST.Term
+open import Reflection.AST.Meta
 
 open import Class.Show.Core
 open import Class.Show.Instances
@@ -77,7 +77,7 @@ module Debug (v : String × ℕ) where
       go (i , ty) = print $ "\t" Str.++ show i Str.++ " : " Str.++ show ty
 
   printCurrentContext : TC ⊤
-  printCurrentContext = printContext =<< getContext
+  printCurrentContext = (λ l → printContext (Data.List.map proj₂ l)) =<< getContext
 
   -- ** definitions
   genSimpleDef : Name → Type → Term → TC ⊤

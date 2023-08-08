@@ -13,8 +13,8 @@ open import Data.Float using (Float)
 open import Data.List using (List; map)
 open import Data.Fin as Fin using (Fin)
 open import Reflection
-open import Reflection.Term
-open import Reflection.Meta
+open import Reflection.AST.Term
+open import Reflection.AST.Meta
 
 open import Class.Show.Core
 

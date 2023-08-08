@@ -19,9 +19,9 @@ open import Meta
 
 module Tactic.Derive (className : Name) (projName : Name) where
 
-open import Prelude
+open import MetaPrelude
 
-open import Reflection.Name using () renaming (_≟_ to _≟-Name_)
+open import Reflection.AST.Name using () renaming (_≟_ to _≟-Name_)
 open import Agda.Builtin.Reflection using () renaming (primShowQName to showName)
 
 open import Generics

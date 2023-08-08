@@ -2,7 +2,7 @@
 
 module Interface.Monad where
 
-open import Prelude
+open import MetaPrelude
 
 private
   variable

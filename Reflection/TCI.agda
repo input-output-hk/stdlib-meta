@@ -5,7 +5,7 @@
 
 module Reflection.TCI where
 
-open import Prelude
+open import MetaPrelude
 
 open import Data.List using (map)
 
@@ -52,7 +52,7 @@ applyNoConstraints x r@record { noConstraints = true  } = R'.noConstraints (x r)
 
 applyExtContext : List (Arg Term) → R.TC A → R.TC A
 applyExtContext [] x       = x
-applyExtContext (t ∷ ts) x = applyExtContext ts $ R.extendContext t x
+applyExtContext (t ∷ ts) x = applyExtContext ts $ R.extendContext "_" t x
 
 private
   liftTC : R.TC A → TC A

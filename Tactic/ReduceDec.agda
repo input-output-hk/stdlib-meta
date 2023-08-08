@@ -5,7 +5,7 @@
 
 module Tactic.ReduceDec where
 
-open import Prelude
+open import MetaPrelude
 open import Meta
 
 open import Generics
@@ -119,7 +119,7 @@ reduceDecTermWith tac r t = inDebugPath "reduceDec" do
   return (scheme , eq)
 
 reduceDecTerm : ReductionOptions → Term → TC (Term × Term)
-reduceDecTerm = reduceDecTermWith (tryConstrsWith' 5 assumption')
+reduceDecTerm = reduceDecTermWith (tryConstrsWith' 10 assumption')
 
 reduceDec' : ReductionOptions → Term → TC Term
 reduceDec' r t = do

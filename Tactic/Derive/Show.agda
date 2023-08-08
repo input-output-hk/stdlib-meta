@@ -6,7 +6,7 @@ open import Meta
 
 module Tactic.Derive.Show where
 
-open import Prelude
+open import MetaPrelude
 open import Agda.Builtin.Reflection using (primShowQName)
 
 open import Generics
@@ -17,7 +17,7 @@ open import Data.String using (fromList; toList) renaming (_++_ to _++S_)
 import Data.Char as C
 import Reflection
 
-open import Relation.Nullary.Negation
+open import Relation.Nullary.Decidable
 
 open import Interface.Show
 

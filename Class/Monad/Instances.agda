@@ -40,8 +40,9 @@ instance
     ._>>=_ → flip concatMap
 
   Monad-TC : Monad TC
-  Monad-TC = record {M}
+  Monad-TC = record {M; return = M'.pure}
     where import Reflection as M
+          import Reflection.TCM as M'
 
 {- ** Id monad: provides us with forward composition as _>=>_,
                 but breaks instance-resolution/typeclass-inference

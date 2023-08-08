@@ -20,7 +20,7 @@ open import Relation.Nullary.Decidable
 open import Relation.Binary.PropositionalEquality hiding ([_])
 
 open import Reflection hiding (return; _>>=_; _>>_; _≟_)
-open import Reflection.Term hiding (_≟_)
+open import Reflection.AST.Term hiding (_≟_)
 
 open import Generics
 open Debug ("rewrite" , 100)

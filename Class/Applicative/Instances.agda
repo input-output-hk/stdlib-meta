@@ -49,7 +49,7 @@ instance
 
   Applicative-Vec : ∀ {n} → Applicative (flip Vec n)
   Applicative-Vec = λ where
-    .pure → V.replicate
+    .pure → V.replicate _
     ._<*>_ → V._⊛_
 
   Applicative₀-Vec : Applicative₀ (flip Vec 0)

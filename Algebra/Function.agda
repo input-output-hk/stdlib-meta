@@ -28,7 +28,7 @@ module Algebra.Function {a b c} (A : Set a) (B : BooleanAlgebra b c) where
   ⊥ : Carrier
   ⊥ a = B.⊥
 
-  open import Function.Equality
+  open import Function.Indexed.Relation.Binary.Equality using (≡-setoid)
   open import Relation.Binary using (Setoid)
   import Relation.Binary.Indexed.Heterogeneous.Construct.Trivial
     as Trivial
